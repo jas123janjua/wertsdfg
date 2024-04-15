@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="colour.css">
+    <title>Contact Us</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+
+
+        h1 {
+            text-align: center;
+            color: #333;
+            animation: fadeIn 1s ease-in-out; 
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #666;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            height: 100px;
+            resize: none;
+        }
+
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.8em;
+            margin-top: -10px;
+        }
+    </style>
+</head>
+<body>
+   
+    <h1>Contact Us</h1>
+    <span id="show"></span>
+    <form class="dashed"
+    action="https://formspree.io/f/moqgpqbz"
+    method="post"
+    onsubmit="return valid()"
+  >
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" required minlength="5">
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" required minlength="5">
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" placeholder="dd/mm/yy" required>
+
+        <label for="phone">Phone:</label>
+        <input type="number" id="phone" name="phone" required minlength="10">
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+
+        <button class="btn" type="submit" onclick="valid()">Submit</button>
+    </form>
+    <script src="https://smtpjs.com/v3/smtp.js">
+    </script>
+    <script>
+        const valid = () => {
+            console.log("we are in function")
+    let firstName = document.getElementById("firstName").value;
+    let lastName = document.getElementById("lastName").value;
+    let email = document.getElementById("email").value;
+    let phone = document.getElementById("phone").value;
+    let message = document.getElementById("message").value;
+    let date = document.getElementById("date").value;
+
+    const email_regex = new RegExp("[a-z0-9]+@[a-z]+\.[a-z]{2,3}");
+    const date_regex = new RegExp("/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[01])$/");
+    const current_date = new Date();
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    let mm = today.getMonth() + 1; // Months start at 0!
+    let dd = today.getDate();
+
+
+    if (dd < 10) dd = '0' + dd;
+    if (mm < 10) mm = '0' + mm;
+
+    const formattedToday = `${yyyy}-${mm}-${dd}`;
+    let d1 = new Date(formattedToday);
+    let d2 = new Date(date)
+
+ 
+
+    if (firstName.length < 5) {
+        document.getElementById("show").innerText = "first name should be atleast 5 characters";
+        setTimeout(() => {
+            document.getElementById("show").innerText = "";
+        }, 3000)
+        return false;
+    }
+    else if (lastName.length < 5) {
+        document.getElementById("show").innerText = "last name should be atleast 5 characters";
+        setTimeout(() => {
+            document.getElementById("show").innerText = "";
+        }, 3000)
+        return false;
+    }
+
+
+    else if (phone.length < 10 || phone.length > 10) {
+        document.getElementById("show").innerText = "phone should be of exactly 10 characters";
+        setTimeout(() => {
+            document.getElementById("show").innerText = "";
+        }, 3000)
+        return false;
+    }
+    else if (isNaN(phone)) {
+        document.getElementById("show").innerText = "phone should contain only numbers";
+        setTimeout(() => {
+            document.getElementById("show").innerText = "";
+        }, 3000)
+        return false;
+    }
+
+    else if (!email_regex.test(email)) {
+        document.getElementById("show").innerText = "email should be a valid email";
+        setTimeout(() => {
+            document.getElementById("show").innerText = "";
+        }, 3000)
+        return false;
+    }
+
+    else if (d2 > d1 || d1 > d2) {
+        document.getElementById("show").innerText = "date should be of today";
+        setTimeout(() => {
+            document.getElementById("show").innerText = "";
+        }, 3000)
+        return false;
+    }
+
+    else if (date.length == 0) {
+        document.getElementById("show").innerText = "date must be entered";
+        setTimeout(() => {
+            document.getElementById("show").innerText = "";
+        }, 3000)
+        return false;
+    }
+
+    else if (message.length < 50) {
+        document.getElementById("show").innerText = "message should be atleast 50 characters";
+        setTimeout(() => {
+            document.getElementById("show").innerText = "";
+        }, 3000)
+        return false;
+
+    }
+    else {
+Window.alert("we are in else");
+        Email.send({
+            Host: "smtp.elasticemail.com",
+            Username: "singhsamanpreet377@gmail.com",
+            Password: "D4D2EE208196CB5A2AD5882F28C12B95A52B",
+            To: document.getElementById("email").value,
+            From: "singhsamanpreet377@gmail.com",
+            Subject: "Form sent you via shark forms ",
+            Body: " THis data is deliered to you via SMTP " + JSON.stringify({
+                firstname: first_name,
+                lastname: last_name,
+                email: email,
+                phone: phone,
+                message: message,
+                date: date
+            })
+        }).then(
+            message => console.log("message sent")
+        );
+        return true
+    }
+
+}
+    </script>
+</body>
+</html>

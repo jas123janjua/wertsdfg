@@ -1,0 +1,427 @@
+<!-- Your main page should go here -->
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Write your species name under the title -->
+	<title></title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <link rel="stylesheet" href="colour.css">
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <link rel="stylesheet" href="slideshow.css">
+    <link rel="stylesheet" href="slideshow.js">
+
+    <script>
+        $(document).ready(function() {
+    var timeoutId;
+
+    var slideImage = function(step) {
+        if (step == undefined) step = 1;
+
+        clearTimeout(timeoutId);
+
+        var indx = $('.galleryimg-sl:visible').index('.galleryimg-sl');
+        if (step != 0) {
+            $('.galleryimg-sl:visible').fadeOut();
+        }
+
+        indx = indx + step;
+
+        if (indx >= $('.galleryimg-sl').length) {
+            indx = 0;
+        } else if (indx < 0) {
+            indx = $('.galleryimg-sl').length - 1;
+        }
+
+        if (step != 0) {
+            $('.galleryimg-sl:eq(' + indx + ')').fadeIn();
+        }
+
+        timeoutId = setTimeout(slideImage, 2000);
+    };
+
+    slideImage(1);
+
+    $('#prev').click(function() {
+        slideImage(-1);
+    });
+
+    $('#next').click(function() {
+        slideImage(1);
+    });
+
+    $('#pause').click(function() {
+        clearTimeout(timeoutId);
+        $(this).hide();
+        $('#play').show();
+    });
+
+    $('#play').click(function() {
+        slideImage(0);
+        $(this).hide();
+        $('#pause').show();
+    });
+
+    function closeSlideshow() {
+        $('#items').hide();
+        $('#showButton').show();
+        $("#button-cl").hide();
+    }
+
+    $('#button-cl').click(closeSlideshow);
+
+    $('#showButton').click(function() {
+        $('#items').show();
+        $(this).hide();
+        $("#button-cl").show();
+    });
+});
+
+$(document).scroll(function () {
+    var x = $('#content').scrolltop();
+    if (x = 0) {
+        $('nav').fadeIn().css({"position":"fixed","top":"0"});
+    } else {
+        $('nav').fadeOut();
+    }
+});
+    </script>
+    
+</head>
+
+<body>
+<!-- Header Start -->
+<header class="header">
+	<div class="container">
+		<div class="row justify-content-between align-items-center">
+			<div class="fish-name">
+                <!-- Write your species name under the anchor tag -->
+				<a href="index.html"></a>
+			</div>
+	 <div class="nav-toggle">
+	   <span></span>
+	 </div>
+			<nav class="nav" >
+				
+				<ul>
+					<img class="img"     src="img/logo-removebg-preview.png" alt="logo">
+					
+					<li><a class="tc" href="#home">Home</a></li>
+					<li><a class="tc" href="#about">About</a></li>
+					<li><a class="tc" href="#predators">Prey & Predators</a></li>
+					<li><a class="tc"  href="#gallery">Gallery</a></li>
+					<li><a class="tc" href="#count">World Count</a></li>
+                    <li><a class="tc" href="honesty.html">Honesty Declaration</a></li>
+					<li><a class="tc" href="Contact.html">Contact Us</a></li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</header>
+<!-- Header End -->
+
+<!-- Home Section Start -->
+<section class="home-section" id="home">
+	<video class="video" autoplay muted loop id="whale video">
+		<source src="img/Untitled video - Made with Clipchamp.mp4" type="video/mp4">
+	</video>
+	
+</section>
+<!-- Home Section End -->
+
+<!-- About Section Start -->
+<section class="about-section" id="about">
+	<header class="pd">
+        <h1>ABOUT</h1>
+        <nav class="bp">
+            <ul class="ad">
+                <li class="jp"><a class="ruby" href="#about whales">ABOUT WHALES</a></li>
+                <li class="jp"><a class="ruby" href="#types of whales">TYPES OF WHALES</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+
+   
+    <article class="mw" id="about whales">
+        <h2>ABOUT WHALES</h2>
+        <p>A diversified and widely dispersed group of totally aquatic placental marine mammals are whales. They relate to huge members of the infraorder Cetacea, which includes all cetaceans other than dolphins and porpoises, as an informal and colloquial grouping. Formally speaking, porpoises and dolphins can be categorized as whales. Even-toed ungulates make to the order Cetartiodactyla, which includes whales, dolphins, and porpoises. Their closest extant non-cetacean cousins are the hippopotamuses, from which they separated around 54 million years ago along with other cetaceans. The last common ancestor of the two whale parvorders, baleen whales (Mysticeti) and toothed whales (Odontoceti), is estimated to have lived around 34 million years ago. Four current (living) families are comprised in the Mysticetes: Balaenopteridae (the rorquals), Balaenidae (right whales), whale), as well as the grey whale, Eschrichtiidae. Odontocetes comprise the six families of dolphins and porpoises that are not technically whales, as well as the Monodontidae (belugas and narwhals), Physeteridae (the sperm whale), Kogiidae (the dwarf and pygmy sperm whale), and Ziphiidae (the beaked whales).</p>
+    </article>
+
+    <article class="mw" id="types of whales">
+        <h2>TYPES OF WHALES</h2>
+        <nav class="bp">
+            <ul class="ad">
+                <li class="jp"><a class="ruby" href="#orca">ORCA</a></li>
+               <li class="jp"><a class="ruby" href="#sperm whale">SPERM WHALE</a></li>
+                <li class="jp"><a class="ruby" href="#BELUGA WHALE">BELUGA WHALE</a></li>
+                <li class="jp"><a class="ruby" href="#Humpback whale">HUMPBACK WHALE</a></li>
+                <li class="jp"><a class="ruby" href="#BLUE WHALE">BLUE WHALE</a></li>
+                <li class="jp"><a class="ruby" href="#BOWHEAD WHALE">BOWHEAD WHALE</a></li>
+                <li class="jp"><a class="ruby" href="#GREY WHALE">GREY WHALE</a></li>
+            </ul>
+    </article>
+     <article class="mw" id="orca">
+        <h3>ORCA</h3>
+          <p>The biggest dolphin in the marine dolphin family is the toothed orca (Orcinus orca), often known as the killer whale. In the genus Orcinus, it is the sole surviving species. Orcas are distinguished by their bodies with patterns of black and white. They are a widely distributed species that may be found in a variety of marine habitats, including tropical oceans, the Arctic, and the Antarctic.
+            Apex predators, orcas have a varied diet. Individual populations frequently focus on certain kinds of prey. This comprises a wide range of fish, sharks, rays, and marine mammals, including whales, dolphins, and seals. They have strong social ties; certain populations are made up of matrilineal family units that are remarkably persistent (pods). Their advanced hunting strategies and vocalizations, which are frequently inherited from their kin and are passed down through generations, are seen as examples of animal civilization.
+
+          </p>
+      <img src="img/1images.jpeg"  style="margin-left: 22%;" width="50%" height="300">
+</article>
+<article class="mw" id="sperm whale">
+     <h3>SPERM WHALE</h3>
+<p>The biggest member of the toothed whale family and the greatest predator is the sperm whale, or cachalot[a] (Physeter macrocephalus). Along with the pygmy sperm whale and dwarf sperm whale of the genus Kogia, it is one of the three surviving species in the sperm whale family and the only living member of the genus Physeter.A pelagic animal with a global range, sperm whales travel periodically in order to forage and reproduce. Mature males, or bulls, live alone outside of the mating season, whereas females and young males reside in groups. The females work together to safeguard and care for their young. Every four to twenty years, females give birth, and they raise the calves for almost ten years. Mature sperm whales have no natural predators, while weaker adults and calves can occasionally be killed by killer whale (orca) pods.</p>
+<img src="img/640x427-sperm-whale.png" style="margin-left: 22%;" width="50%"height="300">
+</article>
+<article class="mw" id="BELUGA WHALE">
+    <h3>BELUGA WHALE</h3>
+<p>The beluga whale (/bɪˈluːɡə/;[4] Delphinapterus leucas) is an Arctic and sub-Arctic cetacean. It is one of two members of the family Monodontidae, along with the narwhal, and the only member of the genus Delphinapterus. It is also known as the white whale, as it is the only cetacean to regularly occur with this colour; the sea canary, due to its high-pitched calls; and the melonhead, though that more commonly refers to the melon-headed whale, which is an oceanic dolphin.</p>
+<img src="img/3IMAGE.webp" style="margin-left: 22%;" width="50%"height="300"></article>
+<article class="mw" id="Humpback whale">
+    <h3>Humpback whale</h3>
+<p>Among the baleen whale species is the humpback whale (Megaptera novaeangliae). It is the sole species in the genus Megaptera and a rorqual, belonging to the Balaenopteridae family. Adults may weigh up to 40 metric tons (44 short tons) and vary in length from 14 to 17 meters (46 to 56 feet). The humpback's body is characterized by its large pectoral fins and tubercles on top of its skull. It is well-liked by whale watchers because to its reputation for breaching and other unusual surface movements. A difficult song by a man usually lasts between four and thirty-three minutes.</p>
+Apex predators, orcas have a varied diet. Individual populations frequently focus on certain kinds of prey. This comprises a wide range of fish, sharks, rays, and marine mammals, including whales, dolphins, and seals. They have strong social ties; certain populations are made up of matrilineal family units that are remarkably persistent (pods). Their advanced hunting strategies and vocalizations, which are frequently inherited from their kin and are passed down through generations, are seen as examples of animal civilization.
+<img src="img/640x427-Whale-Humpback-markedDW.png" style="margin-left: 22%;" width="50%"height="300"></article>
+<article class="mw" id="BLUE WHALE">
+<h3>BLUE WHALE</h3>
+<p>The baleen whale, or blue whale (Balaenoptera musculus), is a kind of marine animal. It is the biggest known animal to have ever lived, with a maximum proven length of 29.9 meters (98 feet) and a maximum weight of 199 tonnes (196 long tons; 219 short tons).[3][A] The long, thin body of a blue whale can have several dorsal tints of greyish-blue and differ somewhat in color beneath. There are four subspecies known to science: B. m. brevicauda (also known as the pygmy blue whale) in the Indian and South Pacific oceans, B. m. musculus in the North Atlantic and North Pacific, B. m. intermedia in the Southern Ocean, and B. m. indica in the Northern Indian Ocean. A population that could represent a fifth subspecies is also present in the seas off the coast of Chile.</p>
+<img src="img/5image.webp"style="margin-left: 22%;" width="50%"height="300"></article>
+<article class="mw" id="BOWHEAD WHALE">
+    <h3>BOWHEAD WHALE</h3>
+    <p>The only surviving member of the genus Balaena is the bowhead whale (Balaena mysticetus), a species of baleen whale that belongs to the family Balaenidae. It gets its name from its large triangular skull, which it utilizes to break through Arctic ice. It is the only baleen whale that is unique to the Arctic and subarctic seas. The species was also known by the names steeple-top, polar, Greenland right whale, and Arctic whale.</p>
+    <img src="img/Bowhead-whale.webp" style="margin-left: 22%;" width="50%"height="300"></article>
+    <article class="mw" id="GREY WHALE">
+        <h3>GREY WHALE</h3>
+        <p>A baleen whale that migrates yearly between feeding and breeding areas is the grey whale (Eschrichtius robustus), often referred to as the grey whale,grey back whale, Pacific grey whale, Korean grey whale, or California grey whale. It can grow up to 14.9 meters (49 feet) in length, weigh up to 41 tonnes (90,000 pounds), and have a lifespan of 55 to 70 years, with the exception of one female who was believed to be between 75 and 80 years old. The whale's dark skin has white mottling and grey patches, which give rise to its popular name.</p>
+        <img src="img/Gray-whale-breaching.webp" style="margin-left: 22%;" width="50%"height="300"></article>     
+         
+	
+</section>
+<!-- About Section End -->
+
+<!-- Prey & Predators Section Start -->
+<section class="predators-section" id="predators">
+    <header class="pd">
+        <h1>PREY AND PREDATORS</h1>
+        
+    </header>
+
+   
+    
+
+        <article class="mw">
+        <h2>Prey and Predators of whales</h2>
+        <nav class="bp">
+            <ul class="ad">
+                <li class="jp"><a class="ruby" href="#orca">ORCA</a></li>
+               <li class="jp"><a class="ruby" href="#sperm whale">SPERM WHALE</a></li>
+                <li class="jp"><a class="ruby" href="#BELUGA WHALE">BELUGA WHALE</a></li>
+                <li class="jp"><a class="ruby" href="#Humpback whale">HUMPBACK WHALE</a></li>
+                <li class="jp" ><a class="ruby" href="#BLUE WHALE">BLUE WHALE</a></li>
+                <li class="jp"><a class="ruby" href="#BOWHEAD WHALE">BOWHEAD WHALE</a></li>
+                <li class="jp"><a class="ruby" href="#GREY WHALE">GREY WHALE</a></li>
+                
+            </ul>
+        </article>
+    
+     <article class="mw" id="orca">
+        <h3>ORCA</h3>
+          <p><b>Prey:</b>
+            The diet of orcas consist of fish, walruses, seals, sea lions, penguins, squids, sea turtles, sharks, and even other whales. The predation patterns of orca whales change according to season and location in their habitat. Some eat more fish and squid than seals and penguins.
+            <br><b>Predators:</b>
+            Some clans of orcas natually are apices of predation, closest to the food chain. The nature is at peace with the orcas to such an extent that no animal stalks orcas, except humans. Orcas are not picky eaters and they hunt on all kind of species of animals: they eat fish, seals, birds and squids.
+         </p>
+      
+</article>
+<article class="mw" id="sperm whale">
+     <h3>SPERM WHALE</h3>
+     
+     <p><B>Prey:</B>Prey:The gigantic squid, Architeuthis, is among the many squid species that sperm whales prefer to eat, and they typically graze at great depths.  Sperm whale males have been observed to feed on bottom-dwelling species such as cod, rays, sharks, and hake1, whereas females nearly exclusively consume squid.
+        <br><b>Predators:</b> of sperm whales includes:Whale killers, orcas Killer whales that are not realSharks, great white PeopleMassive squid (but no concrete proof of this exists).Although adult sperm whales do not have natural predators, pods of killer whales occasionally kill calves and weaker adults.3. Shark bites have also been reported on sperm whales.
+    </p>
+</article>
+<article class="mw" id="BELUGA WHALE">
+    <h3>BELUGA WHALE</h3>
+    <p><b>Prey:</b>A variety of food items are be liked by beluga whales such as octopus, squid, crabs, shrimp, clams, snails, and sandworms. They likewise take all sorts of fish which can include salmon, eulachon, cod, herring, smelt and flatfish.
+        <br><b>Preadators:</b>Beluga whales are hunted by vagrant orcas and arctic bears. The presence of orcas somewhere has been witnessed in Cook Inlet, Bristol Bay, and Hooper Bay. During these cases the orcas attacked belugas. Belugas were spotted heading to shallower waters or the sea ice buried zones in order to escape orcas. In summation, polar bears hunt beluga whales when the latter gets trapped in seaice.
+
+    </p></article>
+<article class="mw" id="Humpback whale">
+    <h3>Humpback whale</h3>
+    <p><b>Prey:</b>At feeding time, humpback whales may consume up to 1.5 tons of food per day, mostly in the form of tiny schooling fish and euphausiids (krill).
+        <br><b>Preadators:</b>the Predators of humpbacks include killer whales, false killer whales, and large sharks etc, although the attack reports of these predators on humpback whales including calves are very low.
+
+    </p></article>
+<article class="mw" id="BLUE WHALE">
+<h3>BLUE WHALE</h3>
+<p><b>Prey:</b>They primarily eat krill, filtering extremely vast amounts of water through their baleen which are like cartilage plates hanging down from the roof of their mouth and operate as a sieve. Some of the largest whales may feed on about 6 tons (13,230 lbs of krill) per day. Blue whales are distribution in all oceans except Arctic Ocean.
+    <br><b>Preadators:</b> Throughout the entire history it is only the orca who is known to be the natural predators of the blue whale. For this reason, the only hazard it rivalize is due to the environmental degradation generated by the humankind disregarding such basic notions.
+
+</p></article>
+<article class="mw" id="BOWHEAD WHALE">
+    <h3>BOWHEAD WHALE</h3>
+    <p><b>Prey:</b>With the longest baleen plates of any whale species, bowhead whales mostly consume marine invertebrates, such as copepods and shrimp-like euphausiids, or moderately large crustaceans. They also eat tiny fish and other invertebrates.
+        <br><b>Preadators:</b>Because they live in such harsh settings and are huge animals, bowhead whales have few natural predators. Although these interactions are not common, killer whales, orcas, provide the biggest natural threat to bowhead whales. Shady seas or ice provide refuge for bowhead whales when they feel threatened. It is this same species that poses the most threat to baby bowheads.
+    </p></article>
+    <article class="mw" id="GREY WHALE">
+        <h3>GREY WHALE</h3>
+        <p><b>Prey:</b>The stomach content of gray whales contain nearly 100% amphipod crustaceans and concentration of 12,000 to 20,000 amphipods per square yard have been found in the southern Chukchi Sea and northern Bering Sea where the whales feed.
+            <br><b>Preadators:</b>The only two threats to gray whales are killer whales and humans. Numerous gray whales have healed scars from the killer whale teeth marks on their flukes and flippers.
+
+	
+</section>
+<!-- Prey & Predators Section End -->
+
+<!-- Gallery Section Start -->
+<section class="gallery-section" id="gallery">
+    <hr>
+    <h2 class="title" style="color: aliceblue;">slide Show</h2>
+    <hr>
+    <div  id='items'>
+        <div><img class="galleryimg-sl" src="img/12009967.webp"> </div>
+        <div><img class="galleryimg-sl" src="img/13tb-orca01-superJumbo.jpg"></div>
+        <div><img class="galleryimg-sl" src="img/2.jpg"></div>
+        <div> <img class="galleryimg-sl" src="img/81I9650.jpg"></div>
+        
+        
+        </div>
+    
+        <ul id='controls'>
+          <li id='prev' class="li-sl" style="display: none;">Prev</li>
+          <li id='play' class="li-sl" style="display: none;">Play</li>
+          <li id='pause' class="li-sl" style="display: none;">Pause</li>
+          <li id='next' class="li-sl" style="display: none;">Next</li>
+        </ul>
+        <div class="close-button" id="closeButton"><button id="button-cl" class="up-down">Close</button></div>
+        <div class="show-button" id="showButton"><button id="button-sl" class="up-down">Show Slideshow</button></div>
+      </div>
+      
+    
+    <div class="container">
+        <div class="mw">
+
+		<h2 class="title">Gallery</h2>
+
+		<div class="photo-gallery">
+			<div class="column">
+				<div class="photo">
+					<img class="gallery-photo" src="https://fthmb.tqn.com/l1vhEscfQQUiCi9W8ZpJ79vc144=/5200x3313/filters:fill(auto,1)/humpback-whale-underwater-portrait--107312834-5a01c2cab39d03001952917f.jpg" alt="image3">
+				</div>
+				<div class="photo">
+					<img class="gallery-photo" src="https://i.natgeofe.com/n/cabaf73d-a887-4384-8588-17b06635bb7f/12009967.jpg" alt="image2">
+				</div>
+				<div class="photo">
+					<img class="gallery-photo" src="https://static01.nyt.com/images/2017/01/13/science/13tb-orca01/13tb-orca01-superJumbo.jpg" alt="image1">
+				</div>
+			</div>
+			<div class="column">
+                <div class="photo">
+					<img class="gallery-photo" src="https://1.bp.blogspot.com/-zClTeQHie-s/V2FRgBhCD_I/AAAAAAACP18/ckjuWjydvVUHfmXGbhjqGh8OpHkAT5BwwCLcB/s1600/2.jpg" alt="image4">
+				</div>
+				
+				<div class="photo">
+					<img class="gallery-photo" src="https://geoffwhite.photography/wp-content/uploads/2020/07/81I9650.jpg" alt="image4">
+				</div>
+				<div class="photo">
+					<img class="gallery-photo" src="https://www.thoughtco.com/thmb/KpPvUOJo-iBpHL9lKXrPCsvU1Ac=/2738x0/filters:no_upscale():max_bytes(150000):strip_icc()/humpback-whale-swimming-underwater--tonga--south-pacific-661799937-5b563b3446e0fb005aa44d50.jpg" alt="image6">
+				</div>
+				<div class="photo">
+					<img class="gallery-photo" src="https://www.whalewatching.com/wp-content/uploads/2017/03/blue-whale.jpg" alt="image5">
+				</div>
+				<div class="photo">
+					<img class="gallery-photo" src="https://tse2.mm.bing.net/th?id=OIP.J9ASVAo49MgjsomWnNTSsQHaE8&pid=Api&P=0&h=180" alt="image11">
+				</div>
+				
+			</div>
+			<div class="column">
+				<div class="photo">
+					<img class="gallery-photo" src="https://tse2.mm.bing.net/th?id=OIP.oSZJehVH6ovPpprUJ_ZoxwHaFj&pid=Api&P=0&h=180" alt="image7">
+				</div>
+				<div class="photo">
+					<img class="gallery-photo" src="https://ih0.redbubble.net/image.3729309.7223/flat,1000x1000,075,f.jpg" alt="image8">
+				</div>
+               
+				<div class="photo">
+					<img class="gallery-photo" src="https://wildoceantasmania.com.au/wp-content/uploads/Baleen-of-a-Southern-Right-Whale.jpg" alt="image10">
+				</div>
+                <div class="photo">
+					<img class="gallery-photo" src="https://i.pinimg.com/736x/01/23/c7/0123c755dcb542ecdb12cc7a393dc932--baleen-whales-laguna-beach.jpg" alt="image8">
+				</div>
+                <div class="photo">
+					<img class="gallery-photo" src="https://media.nature.com/lw1024/magazine-assets/d41586-017-00680-0/d41586-017-00680-0_12306072.jpg" alt="image8">
+				</div>
+               
+                <div class="photo">
+					<img class="gallery-photo" src="http://ourmarinespecies.com/wp-content/uploads/2018/04/types-of-whales-13.jpg" alt="image8">
+				</div>
+			
+				
+			</div>
+		</div>
+
+	</div>
+</div>
+    
+	
+</section>
+<!-- Gallery Section End --> 
+
+<!-- World Count Section Start -->
+ <section class="count-section" id="count">
+        <header class="headerc">
+            <h1>Whales World Count</h1>
+        </header>
+            <p class="h">Whales are found in various regions around the world. Here are some estimates of their populations:</p>
+            <br>
+            <br>
+            <div class="mw">
+            <table class="tablec">
+                <tr>
+                    <th class="th">Species</th>
+                    <th class="th">Population</th>
+                    <th class="th">Status</th>
+                </tr>
+                <tr>
+                    <td class="th">Blue Whale</td>
+                    <td class="th">10,000 - 25,000</td>
+                    <td class="th">Endangered</td>
+                </tr>
+                <tr>
+                    <td class="th">Humpback Whale</td>
+                    <td class="th">60,000 - 80,000</td>
+                    <td class="th"> Least Concern</td>
+                </tr>
+                <tr>
+                    <td class="th">Killer Whale (Orca)</td>
+                    <td class="th">50,000 - 100,000</td>
+                    <td class="th">Least Concern</td>
+                </tr>
+                
+            </table>
+        </div>
+   
+</section>
+<section></section>
+<br>
+<br>
+<br>
+
+<!-- World Count Section End -->
+
+<footer class="f">
+    <section class="Contact section" id="Contact">
+        <div class="align-items-center">
+            <h2>Contact Us: </h2>
+            <p>Phone:+1(647)6494965</p>
+            <p>Website: <a href="https://www.worldwildlife.org/species/whale">www.blue-whale.com</a></p>
+            <p>Address: 1250 24th Street, N.W.
+                Washington, DC 20037</p>
+        </div>
+    </section>
+</footer>
+
+
+</body>
+</html>
